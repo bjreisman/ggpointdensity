@@ -35,6 +35,7 @@ stat_pointdensity <- function(mapping = NULL,
     inherit.aes = inherit.aes,
     params = list(
       adjust = adjust,
+      n = n,
       na.rm = na.rm,
       method = method,
       method.args = method.args,
@@ -98,7 +99,8 @@ StatPointdensity <- ggproto("StatPointdensity", Stat,
                               params
                             },
 
-                            compute_group = function(data, scales, adjust = 1, method = "auto",
+                            compute_group = function(data, scales, adjust = 1, n = n,
+                                                     method = "auto",
                                                      method.args = list()) {
 
                               if (identical(method, "default")) {
