@@ -19,6 +19,7 @@ stat_pointdensity <- function(mapping = NULL,
                               position = "identity",
                               ...,
                               adjust = 1,
+                              n = 100,
                               na.rm = FALSE,
                               method = "auto",
                               method.args = list(),
@@ -90,7 +91,7 @@ StatPointdensity <- ggproto("StatPointdensity", Stat,
                                   y = data$y,
                                   lims = c(scales$x$dimension(), scales$y$dimension()))
                                 if (!is.element("n", names(method.args))) {
-                                  method.args["n"] <- 100
+                                  method.args["n"] <- n
                                 }
                                 if (!is.element("h", names(method.args))) {
                                   h <- c(MASS::bandwidth.nrd(data$x), MASS::bandwidth.nrd(data$y))
